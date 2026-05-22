@@ -289,8 +289,8 @@
             <div class="intro-container">
                 <div class="intro">
                     <p>
-                        In this post, I will introduce <strong>Abstractive RL</strong>
-                        (ARL), a framework for learning abstractions in offline GCRL to improve robustness
+                        In this post, I will introduce <strong>Abstractive RL (ARL)</strong>, a framework for learning
+                        abstractions in offline GCRL to improve robustness
                         in regions where the dataset suffers from low-quality transitions. The main idea is that,
                         as well as providing <strong>temporal abstraction</strong>, hierarchical policies
                         enable <strong>absolute abstraction</strong>, i.e. the use of different state-representations at
@@ -323,15 +323,20 @@
                     Offline RL is commonly formulated as a two-step procedure: first, a value function is learned, and,
                     second, a policy is extracted from this value function.
                     A major challenge in offline RL is extracting an optimal policy from regions of the state-space
-                    where the dataset only contains low-quality transitions.
+                    where the dataset only contains <strong>low-quality transitions</strong>.
                     This is because, to prevent action value overestimation, model-free algorithms typically either
                     incorporate
-                    some form of conservatism during value-learning, or regularise policy extraction towards the dataset
-                    distribution using behaviour cloning. Recent Rejection-Sampling-based methods take this to the
+                    some form of <strong>conservatism during value-learning</strong>, or regularise policy extraction
+                    towards the dataset
+                    distribution using <strong>behaviour cloning</strong>.
+                </p>
+                <p>
+                    Recent Rejection-Sampling-based methods take this to the
                     extreme: by learning the dataset-generating policy using behaviour cloning, and then, at deployment,
                     sampling
-                    actions from this policy and choosing those with the highest value, you can see that the deployed
-                    policy will never take higher-quality actions than those contained within the dataset.
+                    actions from this policy and choosing those with the highest value, <strong>the
+                        deployed
+                        policy will never take higher-quality actions than those contained within the dataset</strong>.
                 </p>
 
                 <div class="math-box">
@@ -383,6 +388,8 @@
                 </ul>
                 <p>
                     <strong>Abstractive RL Implicitly Learning Relativised Options (ARLi)</strong>
+                </p>
+                <p>
                     We make the most minimal amendment to <a href="https://arxiv.org/pdf/2307.11949v4" target="_blank"
                         rel="noopener noreferrer">Hierarchical Implicity Q-Learning (HIQL)</a> to comply with the
                     ARL framework. We learn two value functions: one for the high-level policy and one for the low-level
@@ -398,10 +405,7 @@
 
                 <div class="table-wrapper">
                     <div class="table-caption">
-                        <strong>Table 1: ARLi vs Baseline Performance.</strong> We report each method's average (binary)
-                        success rate (%) across the five test-time goals. Bootstrapped 95% CI over 4 seeds and 20
-                        evaluation runs. Blue bold indicates the highest mean; black bold overlapping confidence
-                        intervals.
+                        <strong>Table 1: ARLi vs HIQL.</strong>
                     </div>
                     <table class="results-table">
                         <thead>
@@ -409,7 +413,7 @@
                                 <th>Task</th>
                                 <th>Size</th>
                                 <th>Dim.</th>
-                                <th>HIQL1vr</th>
+                                <th>HIQL</th>
                                 <th>ARLi</th>
                             </tr>
                         </thead>
@@ -502,7 +506,7 @@
                                 <td>puzzle-4x5-play-v0</td>
                                 <td>3M</td>
                                 <td>99</td>
-                                class="overlap-ci">17&plusmn;3</td>
+                                <td class="overlap-ci">17&plusmn;3</td>
                                 <td class="best-mean">18&plusmn;3</td>
                             </tr>
                             <tr>
@@ -530,6 +534,8 @@
                 </p>
                 <p>
                     <strong>Abstractive RL Explicitly Imposing Translation Invariance (ARLe)</strong>
+                </p>
+                <p>
                     At a much more extreme level, we now impose <strong>translation invariance</strong> on the low-level
                     value function
                     to <strong>explicitly enforce</strong> learning from similar contexts across the state-space.
@@ -545,8 +551,7 @@
 
                 <div class="table-wrapper">
                     <div class="table-caption">
-                        <strong>Table 2: Algorithmic Variant Evaluation (ARLi vs ARLe).</strong> Comparison isolating
-                        implicit relative options and explicit translation invariance configurations.
+                        <strong>Table 2: ARLi vs ARLe.</strong>
                     </div>
                     <table class="results-table">
                         <thead>
@@ -640,7 +645,7 @@
                                 <td>puzzle-4x4-play-v0</td>
                                 <td>1M</td>
                                 <td>83</td>
-                                class="overlap-ci">78&plusmn;11</td>
+                                <td class="overlap-ci">78&plusmn;11</td>
                                 <td class="best-mean">88&plusmn;6</td>
                             </tr>
                             <tr>
@@ -669,22 +674,23 @@
                 </div>
 
                 <p>
-                    The results - less impressive than ARLi (this rigid enforcement is not ideal in practice and
-                    will not scale - the representation is too lossy!), but what is the potential?
+                    The results are less impressive than ARLi (this rigid enforcement is not ideal in practice and
+                    will not scale: the representation is too lossy!), but <strong>what is the potential?</strong>
+                </p>
+                <p>
                     It is a proof of concept:
                 </p>
                 <div class="math-box">
-                    <em>
-                        Hierarchical architectures and relativised options enable level-specific representations that
-                        can improve policy robustness in regions where the offline dataset suffers from low-quality
-                        transitions.
-                    </em>
+                    <strong>Hierarchical architectures</strong> and <strong>relativised options</strong> enable
+                    <strong>level-specific representations</strong> that
+                    can improve policy robustness in regions where the offline dataset suffers from low-quality
+                    transitions.
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <h2>Potential Questions</h2>
+            <h2>Let's Answer Some Potential Questions...</h2>
             <div class="item-block">
                 <p>
                     <strong>Why do we not tune hyperparameters for ARL?</strong>
@@ -727,7 +733,9 @@
                 <p>
                     This work just acts as a proof of concept that <strong>relativised options</strong>
                     and <strong>inductive biases</strong> can improve generalisation in offline GCRL.
-                    Now: can we impose more <strong>flexible inductive biases</strong>? Or, impose leverage
+                </p>
+                <p>
+                    Now: can we impose more <strong>flexible inductive biases</strong>? Or leverage
                     <strong>action chunking</strong> to learn relativised options over action sequences?
                 </p>
             </div>
