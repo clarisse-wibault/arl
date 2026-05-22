@@ -1,0 +1,744 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Clarisse Wibault">
+    <title>Clarisse Wibault</title>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            chtml: {
+                scale: 1
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --link-blue: #4f7ee8;
+            --text: #111111;
+            --muted: #555555;
+            --light: #777777;
+            --box-blue-bg: #f4f7fe;
+            --box-blue-frame: #4f7ee8;
+            --box-sky-bg: #f0f5ff;
+            --box-sky-frame: #6496ff;
+            --highlight-blue: #2b579a;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: var(--text);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--link-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 700;
+        }
+
+        .page {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 40px 20px 60px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main_title {
+            font-size: 38px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 0 0 12px;
+        }
+
+        .main_subtitle {
+            color: var(--muted);
+            font-size: 15px;
+            margin-bottom: 16px;
+        }
+
+        .intro-container {
+            text-align: justify;
+            margin-bottom: 24px;
+        }
+
+        .intro {
+            font-size: 15px;
+            line-height: 1.6;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .intro p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .diagram-container {
+            text-align: center;
+            margin: 28px auto;
+            max-width: 680px;
+        }
+
+        .diagram {
+            max-width: 75%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .diagram-caption {
+            font-size: 13px;
+            color: var(--muted);
+            margin-top: 10px;
+            font-style: italic;
+            line-height: 1.4;
+            padding: 0 20px;
+        }
+
+        .pub-links {
+            font-size: 15px;
+            margin-top: 16px;
+        }
+
+        .pub-links span {
+            color: var(--light);
+            padding: 0 6px;
+        }
+
+        .section {
+            margin-top: 50px;
+        }
+
+        .section h2 {
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: -0.3px;
+            margin: 0 auto 18px;
+            max-width: 680px;
+            border-bottom: 1px solid #eeeeee;
+            padding-bottom: 6px;
+        }
+
+        .item-block {
+            margin-bottom: 24px;
+            text-align: justify;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .item-block p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .item-block ul,
+        .item-block ol {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .math-box {
+            background: var(--box-sky-bg);
+            border: 1px solid var(--box-sky-frame);
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin: 20px auto;
+            max-width: 680px;
+        }
+
+        .math-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2b579a;
+        }
+
+        .taxonomy-box {
+            background: var(--box-blue-bg);
+            border: 1px solid var(--box-blue-frame);
+            border-radius: 6px;
+            padding: 14px 18px;
+            margin: 20px auto;
+            max-width: 680px;
+        }
+
+        .taxonomy-box-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+
+        /* Publication Table Styles */
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            margin: 25px 0;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            text-align: left;
+            color: var(--text);
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 6px 8px;
+        }
+
+        .results-table th {
+            font-weight: 700;
+        }
+
+        /* Booktabs Style Borders */
+        .results-table thead tr:first-child th {
+            border-top: 2px solid #111;
+        }
+
+        .results-table thead tr:last-child th {
+            border-bottom: 1px solid #111;
+        }
+
+        .results-table tbody tr.section-divider td {
+            border-top: 1px solid #eee;
+        }
+
+        .results-table tbody tr:last-child td {
+            border-bottom: 2px solid #111;
+        }
+
+        .table-caption {
+            font-size: 13px;
+            margin-bottom: 8px;
+            text-align: left;
+            line-height: 1.4;
+        }
+
+        .best-mean {
+            color: var(--highlight-blue);
+            font-weight: 700;
+        }
+
+        .overlap-ci {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        footer {
+            margin-top: 60px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--light);
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+
+        <section class="hero">
+            <h1 class="main_title">Abstraction for Offline Goal-Conditioned Reinforcement Learning</h1>
+            <div class="main_subtitle">
+                <a href="https://clarisse-wibault.github.io/clarissewibault/" target="_blank"
+                    rel="noopener noreferrer">Clarisse Wibault</a>
+            </div>
+            <div class="main_subtitle">May 2026</div>
+
+            <div class="pub-links">
+                <a href="https://arxiv.org/pdf/2605.22711v1" target="_blank" rel="noopener noreferrer">Paper</a>
+                <span>|</span>
+                <a href="https://github.com/CWibault/arl" target="_blank" rel="noopener noreferrer">Code</a>
+            </div>
+            <br>
+
+            <div class="intro-container">
+                <div class="intro">
+                    <p>
+                        In this post, I will introduce <strong>Abstractive RL</strong>
+                        (ARL), a framework for learning abstractions in offline GCRL to improve robustness
+                        in regions where the dataset suffers from low-quality transitions. The main idea is that,
+                        as well as providing <strong>temporal abstraction</strong>, hierarchical policies
+                        enable <strong>absolute abstraction</strong>, i.e. the use of different state-representations at
+                        different levels of the
+                        hierarchy, allowing a policy to <strong>reuse experience across similar contexts of the
+                            state-space</strong>.
+                    </p>
+                    <p>
+                        By introducing an <strong>inductive bias</strong> rather than an extra representational loss
+                        term, we can improve performance <strong>without introducing any additional
+                            hyperparameters</strong>.
+                    </p>
+                    <div class="diagram-container">
+                        <img src="main.png" alt="Relativised Options" class="diagram">
+                        <div class="diagram-caption">
+                            Figure 1: enabling the use of different state-representations at different levels of the
+                            hierarchy, requires <strong>relativised options</strong> that abstract away from the
+                            absolute frame of
+                            reference.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>The Problem</h2>
+            <div class="item-block">
+                <p>
+                    Offline RL is commonly formulated as a two-step procedure: first, a value function is learned, and,
+                    second, a policy is extracted from this value function.
+                    A major challenge in offline RL is extracting an optimal policy from regions of the state-space
+                    where the dataset only contains low-quality transitions.
+                    This is because, to prevent action value overestimation, model-free algorithms typically either
+                    incorporate
+                    some form of conservatism during value-learning, or regularise policy extraction towards the dataset
+                    distribution using behaviour cloning. Recent Rejection-Sampling-based methods take this to the
+                    extreme: by learning the dataset-generating policy using behaviour cloning, and then, at deployment,
+                    sampling
+                    actions from this policy and choosing those with the highest value, you can see that the deployed
+                    policy will never take higher-quality actions than those contained within the dataset.
+                </p>
+
+                <div class="math-box">
+                    <em>
+                        Due to their underlying bias towards the dataset distribution, flat offline RL algorithms
+                        struggle in regions where the dataset suffers from low-quality transitions.
+                    </em>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>The Idea: Abstractive RL</h2>
+            <div class="item-block">
+                <p>
+                    In principle, our aim is to learn abstractions that enable the reuse of experience across similar
+                    contexts. By learning options that group together state-waypoint pairs which, under an optimal
+                    policy, induce similar action sequences, options would be relative rather than anchored to an
+                    absolute frame of reference.
+                    This would naturally induce two hierarchical notions of similarity: a high-level similarity, where
+                    similar state-goal pairs induce similar options, and a low-level similarity, where similar
+                    state-option pairs induce similar immediate actions. Our aim would be to learn high-level embeddings
+                    $\phi_h(s,g)$ and low-level embeddings $\phi_l(s,\omega)$ that abstract away information irrelevant
+                    to their respective levels:
+                    $$ \pi(a \mid s,g) = \pi_l(a \mid \phi_l(s, \omega)) \quad \text{where} \quad \omega \sim
+                    \pi_h(\cdot \mid
+                    \phi_h(s,g)). $$
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>The Implementation</h2>
+            <div class="item-block">
+                <p>
+                    We now use the above framework to guide algorithmic decision making.
+                </p>
+                <ul>
+                    <li>
+                        First, allowing the high-level and low-level decision processes to operate on different
+                        representations and
+                        at different temporal abstractions (discount factors), requires <strong>two value
+                            functions</strong>.
+                    </li>
+                    <li>
+                        Second, options should be learned via <strong>action similarity</strong> rather than, for
+                        example, value-similarity.
+                    </li>
+                </ul>
+                <p>
+                    <strong>Abstractive RL Implicitly Learning Relativised Options (ARLi)</strong>
+                    We make the most minimal amendment to <a href="https://arxiv.org/pdf/2307.11949v4" target="_blank"
+                        rel="noopener noreferrer">Hierarchical Implicity Q-Learning (HIQL)</a> to comply with the
+                    ARL framework. We learn two value functions: one for the high-level policy and one for the low-level
+                    policy.
+                    Following HIQL, the option space is bounded to a hypersphere to introduce <strong>geometric
+                        regularisation</strong>, rather than simply learning a distinct embedding for every possible
+                    state-waypoint pair.
+                    However, rather than learning option representations jointly with the value function, we learn
+                    option representations with the low-level policy. Intuitively, we want to push together
+                    state-waypoint pairs that require similar low-level actions rather than state-waypoint pairs with
+                    similar values.
+                </p>
+
+                <div class="table-wrapper">
+                    <div class="table-caption">
+                        <strong>Table 1: ARLi vs Baseline Performance.</strong> We report each method's average (binary)
+                        success rate (%) across the five test-time goals. Bootstrapped 95% CI over 4 seeds and 20
+                        evaluation runs. Blue bold indicates the highest mean; black bold overlapping confidence
+                        intervals.
+                    </div>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Size</th>
+                                <th>Dim.</th>
+                                <th>HIQL1vr</th>
+                                <th>ARLi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>pointmaze-giant-navigate-v0</td>
+                                <td>1M</td>
+                                <td>2</td>
+                                <td class="best-mean">55&plusmn;11</td>
+                                <td class="overlap-ci">48&plusmn;8</td>
+                            </tr>
+                            <tr>
+                                <td>pointmaze-giant-stitch-v0</td>
+                                <td>1M</td>
+                                <td>2</td>
+                                <td class="overlap-ci">0&plusmn;0</td>
+                                <td class="overlap-ci">0&plusmn;0</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>antmaze-giant-navigate-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td>38&plusmn;3</td>
+                                <td class="best-mean">48&plusmn;3</td>
+                            </tr>
+                            <tr>
+                                <td>antmaze-giant-stitch-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td>7&plusmn;7</td>
+                                <td class="best-mean">32&plusmn;7</td>
+                            </tr>
+                            <tr>
+                                <td>antmaze-teleport-stitch-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td>29&plusmn;4</td>
+                                <td>36&plusmn;5</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>humanoidmaze-giant-navigate-v0</td>
+                                <td>4M</td>
+                                <td>69</td>
+                                <td>22&plusmn;11</td>
+                                <td class="best-mean">49&plusmn;6</td>
+                            </tr>
+                            <tr>
+                                <td>humanoidmaze-giant-stitch-v0</td>
+                                <td>4M</td>
+                                <td>69</td>
+                                <td>4&plusmn;3</td>
+                                <td class="best-mean">13&plusmn;2</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>cube-double-play-v0</td>
+                                <td>1M</td>
+                                <td>37</td>
+                                <td>2&plusmn;0</td>
+                                <td>53&plusmn;2</td>
+                            </tr>
+                            <tr>
+                                <td>cube-triple-play-v0</td>
+                                <td>3M</td>
+                                <td>46</td>
+                                <td>7&plusmn;3</td>
+                                <td class="overlap-ci">14&plusmn;2</td>
+                            </tr>
+                            <tr>
+                                <td>cube-quadruple-play-v0</td>
+                                <td>5M</td>
+                                <td>55</td>
+                                <td>0&plusmn;0</td>
+                                <td class="best-mean">1&plusmn;0</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>puzzle-3x3-play-v0</td>
+                                <td>1M</td>
+                                <td>55</td>
+                                <td>27&plusmn;8</td>
+                                <td class="overlap-ci">86&plusmn;14</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x4-play-v0</td>
+                                <td>1M</td>
+                                <td>83</td>
+                                <td>49&plusmn;27</td>
+                                <td class="overlap-ci">78&plusmn;11</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x5-play-v0</td>
+                                <td>3M</td>
+                                <td>99</td>
+                                class="overlap-ci">17&plusmn;3</td>
+                                <td class="best-mean">18&plusmn;3</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x6-play-v0</td>
+                                <td>5M</td>
+                                <td>115</td>
+                                <td>0&plusmn;0</td>
+                                <td class="overlap-ci">14&plusmn;7</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>scene-play-v0</td>
+                                <td>1M</td>
+                                <td>40</td>
+                                <td>12&plusmn;3</td>
+                                <td class="best-mean">24&plusmn;3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    The results are promising! Without <strong>any</strong> hyperparameter tuning (we
+                    simply inherit those tuned for HIQL), we achieve non-trivial performance in many of the
+                    higher-dimensional OGBench environments.
+                </p>
+                <p>
+                    <strong>Abstractive RL Explicitly Imposing Translation Invariance (ARLe)</strong>
+                    At a much more extreme level, we now impose <strong>translation invariance</strong> on the low-level
+                    value function
+                    to <strong>explicitly enforce</strong> learning from similar contexts across the state-space.
+                    We use <strong>relativised states</strong>, which we define as $v = g_s - s$, where $s$ is the
+                    current state
+                    and $g_s$ a waypoint to the goal, and <strong>explicit relativised options</strong> to
+                    <strong>encourage abstraction from the absolute frame of reference</strong>. We do still condition
+                    the low-level policy on the absolute state, however, to enable the policy to satisfy local
+                    constraints.
+                    <br><br>
+                    Notably, ARLe outperforms ARLi in two out of the four sparsest datasets:
+                </p>
+
+                <div class="table-wrapper">
+                    <div class="table-caption">
+                        <strong>Table 2: Algorithmic Variant Evaluation (ARLi vs ARLe).</strong> Comparison isolating
+                        implicit relative options and explicit translation invariance configurations.
+                    </div>
+                    <table class="results-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Size</th>
+                                <th>Dim.</th>
+                                <th>ARLi</th>
+                                <th>ARLe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>pointmaze-giant-navigate-v0</td>
+                                <td>1M</td>
+                                <td>2</td>
+                                <td class="overlap-ci">48&plusmn;8</td>
+                                <td>16&plusmn;2</td>
+                            </tr>
+                            <tr>
+                                <td>pointmaze-giant-stitch-v0</td>
+                                <td>1M</td>
+                                <td>2</td>
+                                <td class="overlap-ci">0&plusmn;0</td>
+                                <td class="overlap-ci">0&plusmn;0</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>antmaze-giant-navigate-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td class="best-mean">48&plusmn;3</td>
+                                <td class="overlap-ci">42&plusmn;4</td>
+                            </tr>
+                            <tr>
+                                <td>antmaze-giant-stitch-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td class="best-mean">32&plusmn;7</td>
+                                <td>21&plusmn;1</td>
+                            </tr>
+                            <tr>
+                                <td>antmaze-teleport-stitch-v0</td>
+                                <td>1M</td>
+                                <td>29</td>
+                                <td>36&plusmn;5</td>
+                                <td>41&plusmn;4</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>humanoidmaze-giant-navigate-v0</td>
+                                <td>4M</td>
+                                <td>69</td>
+                                <td class="best-mean">49&plusmn;6</td>
+                                <td>38&plusmn;4</td>
+                            </tr>
+                            <tr>
+                                <td>humanoidmaze-giant-stitch-v0</td>
+                                <td>4M</td>
+                                <td>69</td>
+                                <td class="best-mean">13&plusmn;2</td>
+                                <td class="overlap-ci">10&plusmn;3</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>cube-double-play-v0</td>
+                                <td>1M</td>
+                                <td>37</td>
+                                <td>53&plusmn;2</td>
+                                <td class="best-mean">67&plusmn;3</td>
+                            </tr>
+                            <tr>
+                                <td>cube-triple-play-v0</td>
+                                <td>3M</td>
+                                <td>46</td>
+                                <td class="overlap-ci">14&plusmn;2</td>
+                                <td class="best-mean">15&plusmn;3</td>
+                            </tr>
+                            <tr>
+                                <td>cube-quadruple-play-v0</td>
+                                <td>5M</td>
+                                <td>55</td>
+                                <td class="best-mean">1&plusmn;0</td>
+                                <td>0&plusmn;0</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>puzzle-3x3-play-v0</td>
+                                <td>1M</td>
+                                <td>55</td>
+                                <td class="overlap-ci">86&plusmn;14</td>
+                                <td>44&plusmn;25</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x4-play-v0</td>
+                                <td>1M</td>
+                                <td>83</td>
+                                class="overlap-ci">78&plusmn;11</td>
+                                <td class="best-mean">88&plusmn;6</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x5-play-v0</td>
+                                <td>3M</td>
+                                <td>99</td>
+                                <td class="best-mean">18&plusmn;3</td>
+                                <td class="overlap-ci">14&plusmn;7</td>
+                            </tr>
+                            <tr>
+                                <td>puzzle-4x6-play-v0</td>
+                                <td>5M</td>
+                                <td>115</td>
+                                <td class="overlap-ci">14&plusmn;7</td>
+                                <td class="overlap-ci">9&plusmn;9</td>
+                            </tr>
+                            <tr class="section-divider">
+                                <td>scene-play-v0</td>
+                                <td>1M</td>
+                                <td>40</td>
+                                <td class="best-mean">24&plusmn;3</td>
+                                <td class="overlap-ci">21&plusmn;3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    The results - less impressive than ARLi (this rigid enforcement is not ideal in practice and
+                    will not scale - the representation is too lossy!), but what is the potential?
+                    It is a proof of concept:
+                </p>
+                <div class="math-box">
+                    <em>
+                        Hierarchical architectures and relativised options enable level-specific representations that
+                        can improve policy robustness in regions where the offline dataset suffers from low-quality
+                        transitions.
+                    </em>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Potential Questions</h2>
+            <div class="item-block">
+                <p>
+                    <strong>Why do we not tune hyperparameters for ARL?</strong>
+                    <br>
+                    Offline RL typically requires <a href="https://arxiv.org/pdf/2504.11453" target="_blank"
+                        rel="noopener noreferrer">significant online tuning</a>, which is
+                    expensive and would be
+                    unscalable for training a billion-parameter general-purpose agent. Scaling offline RL should be
+                    robust to hyperparameters, which is why our work focuses on <strong>inductive
+                        biases</strong> rather than
+                    representational losses that introduce additional hyperparameters.
+                </p>
+                <p>
+                    <strong>Why does ARL still perform poorly in certain tasks?</strong>
+                    <br>
+                    There are many confounding factors! Some examples: poor high-level value learning and a lack of
+                    gradient in long horizon tasks; the high-level policy being unimodal rather than multimodal; not
+                    training for enough gradient steps for large dataset sizes; not learning goal representations for
+                    the high-level policy.
+
+                    The aforementioned issues could be mitigated by combining ARL with value horizon reduction methods
+                    such as TD-$n$ or
+                    <a href="https://arxiv.org/pdf/2510.22512" target="_blank" rel="noopener noreferrer">Transitive
+                        RL</a>, learning a Flow Policy rather than a Gaussian (especially for the high-level policy),
+                    training for more steps (we run all experiments for 1M), and using representation learning for the
+                    high-level decision process.
+                </p>
+                <p>
+                    <strong>What environments does ARL have the most impact in?</strong>
+                    Both of our ARL-guided algorithms exhibit positive improvement trends over our benchmark algorithms
+                    with increasing dataset sparsity-- and, it makes sense that relativised options and experience reuse
+                    become increasingly important as sparsity increases.
+                </p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>What's Next?</h2>
+            <div class="item-block">
+                <p>
+                    This work just acts as a proof of concept that <strong>relativised options</strong>
+                    and <strong>inductive biases</strong> can improve generalisation in offline GCRL.
+                    Now: can we impose more <strong>flexible inductive biases</strong>? Or, impose leverage
+                    <strong>action chunking</strong> to learn relativised options over action sequences?
+                </p>
+            </div>
+
+            <footer>
+                <a href="https://github.com/jonbarron/jonbarron.github.io" target="_blank"
+                    rel="noopener noreferrer">Page
+                    Template</a>
+            </footer>
+        </section>
+    </main>
+</body>
+
+</html>
