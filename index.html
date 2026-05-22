@@ -351,13 +351,18 @@
             <h2>The Idea: Abstractive RL</h2>
             <div class="item-block">
                 <p>
-                    In principle, our aim is to learn abstractions that enable the reuse of experience across similar
-                    contexts. By learning options that group together state-waypoint pairs which, under an optimal
+                    In principle, our aim is to <strong>learn abstractions that enable the reuse of experience across
+                        similar
+                        contexts</strong>. By learning options that group together state-waypoint pairs which, under an
+                    optimal
                     policy, induce similar action sequences, options would be relative rather than anchored to an
                     absolute frame of reference.
                     This would naturally induce two hierarchical notions of similarity: a high-level similarity, where
                     similar state-goal pairs induce similar options, and a low-level similarity, where similar
-                    state-option pairs induce similar immediate actions. Our aim would be to learn high-level embeddings
+                    state-option pairs induce similar immediate actions.
+                </p>
+                <p>
+                    Our aim would be to learn high-level embeddings
                     $\phi_h(s,g)$ and low-level embeddings $\phi_l(s,\omega)$ that abstract away information irrelevant
                     to their respective levels:
                     $$ \pi(a \mid s,g) = \pi_l(a \mid \phi_l(s, \omega)) \quad \text{where} \quad \omega \sim
